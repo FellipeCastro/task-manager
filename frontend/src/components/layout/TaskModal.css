@@ -1,0 +1,77 @@
+.fade {
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000050;
+}
+
+.task-modal {
+    z-index: 9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1F1F1F;
+    padding: 2em;
+    border-radius: .5em;
+}
+
+.task-modal h4 {
+    margin-bottom: .5em;
+    font-size: 1.5em;
+}
+
+.task-modal p {
+    margin-bottom: 1em;
+    color: 8A8A8A;
+    text-align: left;
+    line-height: 1.5em;
+    font-size: .9em;
+}
+
+.task-modal h5 {
+    margin-bottom: 1em;
+    font-size: .9em;
+}
+
+.subtasks {
+    width: 100%;
+}
+
+.subtask {
+    width: 100%;
+    background: #181818;
+    margin-bottom: .5em;
+    padding: 1em;
+    border-radius: .5em;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+.subtask-btn {
+    background: transparent;
+    color: #8A8A8A;
+    border: 1px solid #8A8A8A;
+    border-radius: .5em;
+    padding: .5em;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: .8em;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.subtask-btn:hover {
+    background: #635EC5;
+    color: #fff;
+}
+
+.done span {
+    color: #8A8A8A;
+    text-decoration: line-through;
+}
