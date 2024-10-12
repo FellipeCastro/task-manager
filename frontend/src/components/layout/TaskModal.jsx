@@ -1,4 +1,4 @@
-import { FaCheck } from "react-icons/fa"
+import { FaCheck, FaTrashAlt } from "react-icons/fa"
 import { FaXmark } from "react-icons/fa6"
 
 import "./TaskModal.css"
@@ -8,7 +8,13 @@ const TaskModal = () => {
         <>
             <div className="fade"></div>
             <div className="task-modal">
-                <h4>Fazer tafera tal</h4>
+                <div className="title-container">
+                    <h4>Fazer tafera tal</h4>
+                    
+                    <button className="delete-task-btn">
+                        <FaTrashAlt />
+                    </button>
+                </div>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus vitae quibusdam doloremque quisquam facere. Animi ab quo excepturi necessitatibus praesentium odit ducimus saepe! Voluptate, libero! Eius ducimus iste nemo officia.</p>
 
                 <h5>Subtarefas (1 de 3)</h5>

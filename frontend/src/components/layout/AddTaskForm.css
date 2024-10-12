@@ -1,0 +1,116 @@
+.fade {
+    z-index: 9;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #00000050;
+}
+
+.add-task-form {
+    width: 500px;
+    z-index: 9;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #1F1F1F;
+    padding: 2em;
+    border-radius: .5em;
+}
+
+.add-task-form h2 {
+    margin-bottom: 1em;
+}
+
+.form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.input-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.input-container label, 
+.form span {
+    font-size: 1em;
+    font-weight: bold;
+}
+
+.input-container input,
+.input-container textarea,
+.input-sub-container input {
+    width: 100%;
+    padding: .8em 1em;
+    background: transparent;
+    color: #fff;
+    border: 1px solid #8A8A8A;
+    border-radius: .2em;
+    outline: none;
+}
+
+.input-container textarea {
+    resize: vertical;
+    height: 100px;
+}
+
+.sub-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.input-sub-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: .5em;
+}
+
+.delete-sub {
+    border: none;
+    background: transparent;
+    font-size: 1.2em;
+    color: #8A8A8A;
+    padding: .5em;
+    cursor: pointer;
+    transition: .5;
+}
+
+.delete-sub:hover {
+    color: #635EC5;
+}
+
+.new-sub-btn,
+.submit-btn {
+    border: 1px solid #fff;
+    border-radius: 2em;
+    background: #fff;
+    padding: 1em 2em;
+    color: #635EC5;
+    font-weight: bold;
+    cursor: pointer;
+    transition: .5s;
+}
+
+.submit-btn {
+    border-color: #635EC5;
+    background: #635EC5;
+    color: #fff;
+}
+
+.new-sub-btn:hover,
+.submit-btn:hover {
+    border-color: #635EC5;
+    color: #635EC5;
+    background: transparent;
+}

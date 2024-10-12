@@ -1,4 +1,5 @@
 import { MdOutlineDashboard } from "react-icons/md"
+import { FaTrashAlt } from "react-icons/fa"
 
 import "./Sidebar.css"
 
@@ -10,13 +11,25 @@ const Sidebar = () => {
 
             <div className="boards">
                 <div className="board active">
-                    <MdOutlineDashboard /> Lançamento da nova plataforma
+                    <MdOutlineDashboard /> Lançamento da plataforma 
+                    
+                    <button className="delete-btn">
+                        <FaTrashAlt />
+                    </button>
                 </div>
                 <div className="board">
-                    <MdOutlineDashboard /> Lançamento da nova plataforma
+                    <MdOutlineDashboard /> Lançamento da plataforma
+
+                    <button className="delete-btn">
+                        <FaTrashAlt />
+                    </button>
                 </div>
                 <div className="board">
-                    <MdOutlineDashboard /> Lançamento da nova plataforma
+                    <MdOutlineDashboard /> Lançamento da plataforma
+
+                    <button className="delete-btn">
+                        <FaTrashAlt />
+                    </button>
                 </div>
                 <div className="board new-board">
                     <MdOutlineDashboard /> +Criar novo projeto
