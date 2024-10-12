@@ -1,0 +1,58 @@
+.main-board {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2em;
+}
+
+.column {
+    width: 300px;
+}
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: .5em;
+    margin-bottom: 1em;
+}
+
+.title span {
+    height: 15px;
+    width: 15px;
+    background-color: #8A8A8A;
+    border-radius: 50%;
+}
+
+span.to-do {
+    background: #65BFDB;
+}
+
+span.doing {
+    background: #8475DB;
+}
+
+span.done {
+    background: #83D4BA;
+}
+
+.title h3 {
+    color: #8A8A8A;
+    font-size: 1em;
+}
+
+.task {
+    background: #1F1F1F;
+    margin-bottom: 1em;
+    padding: 1em 2em;
+    border-radius: .5em;
+    cursor: pointer;
+}
+
+.task h4 {
+    margin-bottom: .3em;
+}
+
+.task span {
+    color: #8A8A8A;
+}
