@@ -1,6 +1,15 @@
+import Header from "./components/layout/Header"
+import Sidebar from "./components/layout/Sidebar"
+
 const App = () => {
   return (
-    <h1>Hello World</h1>
+    <>
+      <Sidebar />
+
+      <div className="container">
+        <Header />
+      </div>
+    </>
   )
 }
 

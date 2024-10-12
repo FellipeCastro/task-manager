@@ -6,3 +6,14 @@
   box-sizing: border-box;
   font-family: "Montserrat", serif;
 }
+
+#root {
+  min-height: 100vh;
+  background: #181818;
+  color: #fff;
+  display: flex;
+}
+
+.container {
+  width: 100%;
+}

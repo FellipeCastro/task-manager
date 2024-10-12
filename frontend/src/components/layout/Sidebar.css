@@ -1,0 +1,44 @@
+.aside {
+    width: 500px;
+    background: #1F1F1F;
+    padding: 2em;
+    box-shadow: 0 0 10px #00000030;
+    z-index: 9;
+}
+
+.aside h1 {
+    margin-bottom: 1.5em;
+}
+
+.aside span {
+    color: #8A8A8A;
+}
+
+.boards {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.board {
+    padding: 1em 2em;
+    margin-left: -2em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+    color: #8A8A8A;
+    cursor: pointer;
+}
+
+.active {
+    background: #635EC5;
+    color: #fff;
+    border-radius: 0 2em 2em 0;
+}
+
+.new-board {
+    color: #635EC5;
+}

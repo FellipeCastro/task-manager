@@ -1,0 +1,24 @@
+.header {
+    width: 100%;
+    background: #1F1F1F;
+    padding: 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn {
+    background: #635EC5;
+    color: #fff;
+    border: 1px solid #635EC5;
+    border-radius: 2em;
+    padding: 1em 2em;
+    text-decoration: none;
+    font-weight: bold;
+    transition: .5s;
+}
+
+.btn:hover {
+    background: transparent;
+    color: #635EC5;
+}
