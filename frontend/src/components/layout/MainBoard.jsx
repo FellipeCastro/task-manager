@@ -46,7 +46,7 @@ const MainBoard = ({ activeBoard, handleTaskClick }) => {
                         </div>
                     )
                 })}
-                {doingTasks.length === 0 && <p className="msg">Não há tarefas a sendo feitas</p>}
+                {doingTasks.length === 0 && <p className="msg">Não há tarefas sendo feitas</p>}
             </div>
             <div className="column">
                 <div className="title">

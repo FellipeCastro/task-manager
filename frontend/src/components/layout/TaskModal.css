@@ -33,11 +33,6 @@
     color: #8A8A8A;
     padding: .5em;
     cursor: pointer;
-    transition: .5;
-}
-
-.delete-task-btn:hover {
-    color: #635EC5;
 }
 
 .title-container h4 {
@@ -74,11 +69,15 @@
 }
 
 .subtask-btn {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: transparent;
     color: #8A8A8A;
     border: 1px solid #8A8A8A;
     border-radius: .5em;
-    padding: .5em;
     text-decoration: none;
     font-weight: bold;
     font-size: .8em;
@@ -86,9 +85,10 @@
     transition: .5s;
 }
 
-.subtask-btn:hover {
+.done .subtask-btn {
     background: #635EC5;
     color: #fff;
+    border-color: #635EC5;
 }
 
 .done span {

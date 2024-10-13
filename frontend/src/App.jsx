@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+
 import Header from "./components/layout/Header"
 import MainBoard from "./components/layout/MainBoard"
 import Sidebar from "./components/layout/Sidebar"
@@ -36,9 +37,9 @@ const App = () => {
 
   const addBoard = (newBoardTitle) => {
     const newBoard = {
-      id: boards.length + 1, 
+      id: boards.length + 1,
       title: newBoardTitle,
-      tasks: [], 
+      tasks: [],
     }
 
     setBoards([...boards, newBoard])
@@ -51,6 +52,39 @@ const App = () => {
     setSelectedTask(task)
     setShowTaskModal(true)
   }
+
+  // estudar
+  const updateTask = (updatedTask) => {
+    const updatedBoards = boards.map((board) => {
+      if (board.id === activeBoardId) {
+        return {
+          ...board,
+          tasks: board.tasks.map((task) =>
+            task.id === updatedTask.id ? updatedTask : task
+          )
+        }
+      }
+      return board
+    })
+    setBoards(updatedBoards)
+    setSelectedTask(updatedTask)
+  }
+
+  // estudar
+  const deleteTask = (taskId) => {
+    const updatedBoards = boards.map((board) => {
+      if (board.id === activeBoardId) {
+        return {
+          ...board,
+          tasks: board.tasks.filter((task) => task.id !== taskId)
+        }
+      }
+      return board
+    })
+    setBoards(updatedBoards)
+    setShowTaskModal(false)
+  }
+
 
   return (
     <>
@@ -69,7 +103,7 @@ const App = () => {
 
       {showAddBoardForm && <AddBoardForm setShowAddBoardForm={setShowAddBoardForm} addBoard={addBoard} />}
       {showAddTaskForm && <AddTaskForm setShowAddTaskForm={setShowAddTaskForm} />}
-      {showTaskModal && <TaskModal task={selectedTask} setShowTaskModal={setShowTaskModal} />}
+      {showTaskModal && <TaskModal task={selectedTask} setShowTaskModal={setShowTaskModal} updateTask={updateTask} deleteTask={deleteTask} />}
     </>
   )
 }

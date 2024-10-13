@@ -1,12 +1,22 @@
 import { FaCheck, FaTrashAlt } from "react-icons/fa"
-import { FaXmark } from "react-icons/fa6"
 
 import "./TaskModal.css"
 
-const TaskModal = ({ task, setShowTaskModal }) => {
+const TaskModal = ({ task, setShowTaskModal, updateTask, deleteTask }) => {
     if (!task) return null
     const countCompletedSubtasks = (subtasks) => {
-        return subtasks.filter((subtask) => subtask.isDone).length;
+        return subtasks.filter((subtask) => subtask.isDone).length
+    }
+
+    // estudar
+    const toggleSubtask = (subtaskId) => {
+        const updatedSubtasks = task.subtasks.map((subtask) =>
+            subtask.id === subtaskId ? { ...subtask, isDone: !subtask.isDone } : subtask
+        )
+        const updatedTask = { ...task, subtasks: updatedSubtasks }
+
+        // Chama a função de atualização de task no componente App
+        updateTask(updatedTask)
     }
 
     return (
@@ -16,7 +26,7 @@ const TaskModal = ({ task, setShowTaskModal }) => {
                 <div className="title-container">
                     <h4>{task.title}</h4>
 
-                    <button className="delete-task-btn">
+                    <button className="delete-task-btn" onClick={() => deleteTask(task.id)}>
                         <FaTrashAlt />
                     </button>
                 </div>
@@ -28,8 +38,8 @@ const TaskModal = ({ task, setShowTaskModal }) => {
                     {task.subtasks.map((subtask) => {
                         return (
                             <div key={subtask.id} className={`subtask ${subtask.isDone ? "done" : ""}`}>
-                                <button className="subtask-btn">
-                                    {subtask.isDone ? <FaXmark /> : <FaCheck />}
+                                <button className="subtask-btn" onClick={() => toggleSubtask(subtask.id)}>
+                                    {subtask.isDone ? <FaCheck /> : ""}
                                 </button>
                                 <span>{subtask.title}</span>
                             </div>

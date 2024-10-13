@@ -1,123 +1,283 @@
 {
-    "boards": [
-      {
-        "id": 1,
-        "title": "Platform Launch",
-        "tasks": [
-          {
-            "id": 1,
-            "title": "Fazer tarefa tal",
-            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus vitae quibusdam doloremque quisquam facere.",
-            "subtasks": [
-              {
-                "id": 1,
-                "title": "Subtarefa 1",
-                "isDone": false
-              },
-              {
-                "id": 2,
-                "title": "Subtarefa 2",
-                "isDone": false
-              },
-              {
-                "id": 3,
-                "title": "Subtarefa 3",
-                "isDone": false
-              }
-            ]
-          },
-          {
-            "id": 2,
-            "title": "Configurar API",
-            "description": "Conectar o backend com o frontend utilizando a API REST.",
-            "subtasks": [
-              {
-                "id": 1,
-                "title": "Criar rotas de autenticação",
-                "isDone": true
-              },
-              {
-                "id": 2,
-                "title": "Criar rotas de CRUD",
-                "isDone": false
-              },
-              {
-                "id": 3,
-                "title": "Testar rotas",
-                "isDone": false
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "title": "Marketing Plan",
-        "tasks": [
-          {
-            "id": 1,
-            "title": "Criar conteúdo para a campanha",
-            "description": "Criar conteúdos visuais e textos para a nova campanha de marketing.",
-            "subtasks": [
-              {
-                "id": 1,
-                "title": "Desenvolver posts para redes sociais",
-                "isDone": true
-              },
-              {
-                "id": 2,
-                "title": "Criar vídeos curtos",
-                "isDone": true
-              },
-              {
-                "id": 3,
-                "title": "Agendar postagens",
-                "isDone": true
-              }
-            ]
-          },
-          {
-            "id": 2,
-            "title": "Analisar performance das campanhas",
-            "description": "Analisar o desempenho da campanha de marketing no último trimestre.",
-            "subtasks": [
-              {
-                "id": 1,
-                "title": "Coletar dados de conversão",
-                "isDone": true
-              },
-              {
-                "id": 2,
-                "title": "Gerar relatórios de ROI",
-                "isDone": false
-              }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "title": "Roadmap",
-        "tasks": [
-          {
-            "id": 1,
-            "title": "Planejar próximos 6 meses",
-            "description": "Criar um roadmap para o desenvolvimento de novas funcionalidades para os próximos 6 meses.",
-            "subtasks": [
-              {
-                "id": 1,
-                "title": "Identificar principais necessidades do cliente",
-                "isDone": true
-              },
-              {
-                "id": 2,
-                "title": "Priorizar funcionalidades",
-                "isDone": false
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  }
-  
+  "boards": [
+    {
+      "id": 1,
+      "title": "Platform Launch",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Fazer tarefa tal",
+          "description": "Esta tarefa envolve a finalização de ajustes importantes para o lançamento da plataforma. É essencial garantir que todos os componentes estejam funcionando corretamente.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Subtarefa 1",
+              "isDone": false
+            },
+            {
+              "id": 2,
+              "title": "Subtarefa 2",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Subtarefa 3",
+              "isDone": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Configurar API",
+          "description": "Conectar o backend com o frontend utilizando a API REST. Certifique-se de que as rotas estão corretamente implementadas e testadas.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Criar rotas de autenticação",
+              "isDone": false
+            },
+            {
+              "id": 2,
+              "title": "Criar rotas de CRUD",
+              "isDone": true
+            },
+            {
+              "id": 3,
+              "title": "Testar rotas",
+              "isDone": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Design UI/UX",
+          "description": "Ajustar a interface do usuário e otimizar a experiência do usuário para garantir uma navegação fluida.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Revisar cores e tipografia",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Testar navegação mobile",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Implementar feedback dos usuários",
+              "isDone": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Marketing Plan",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Criar conteúdo para a campanha",
+          "description": "Desenvolver textos e visuais atrativos para o lançamento da nova campanha de marketing em todas as plataformas digitais.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Desenvolver posts para redes sociais",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Criar vídeos curtos",
+              "isDone": true
+            },
+            {
+              "id": 3,
+              "title": "Agendar postagens",
+              "isDone": true
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Analisar performance das campanhas",
+          "description": "Revisar métricas de desempenho e gerar relatórios com base nos KPIs definidos, como ROI e engajamento.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Coletar dados de conversão",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Gerar relatórios de ROI",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Identificar melhorias nas campanhas",
+              "isDone": false
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "title": "Planejar campanha de e-mail marketing",
+          "description": "Criar estratégia de e-mails direcionados para clientes e leads em potencial, destacando ofertas especiais.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Desenvolver template de e-mail",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Segmentar lista de clientes",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Agendar envios",
+              "isDone": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Roadmap",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Planejar próximos 6 meses",
+          "description": "Criar um roadmap estratégico para o desenvolvimento das funcionalidades prioritárias da plataforma.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Identificar principais necessidades do cliente",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Priorizar funcionalidades",
+              "isDone": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Revisar metas do último trimestre",
+          "description": "Avaliar o cumprimento das metas de desenvolvimento estabelecidas no último trimestre e identificar pontos de melhoria.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Analisar métricas de desempenho",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Realizar reunião de feedback com a equipe",
+              "isDone": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Customer Support",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Melhorar tempo de resposta",
+          "description": "Implementar melhorias no sistema de suporte ao cliente para garantir respostas mais rápidas e eficientes.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Revisar fluxos de atendimento",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Treinar equipe de suporte",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Monitorar satisfação do cliente",
+              "isDone": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Automatizar respostas",
+          "description": "Desenvolver respostas automáticas para perguntas frequentes utilizando inteligência artificial.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Identificar perguntas frequentes",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Implementar chatbot",
+              "isDone": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "New Feature Development",
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Desenvolver sistema de notificações",
+          "description": "Criar um sistema que envie notificações em tempo real para os usuários sobre atualizações importantes.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Desenhar wireframes",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Implementar backend",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Testar sistema de notificações",
+              "isDone": false
+            }
+          ]
+        },
+        {
+          "id": 2,
+          "title": "Lançar novo dashboard de analytics",
+          "description": "Desenvolver e lançar um novo painel de análise para fornecer insights detalhados aos usuários.",
+          "subtasks": [
+            {
+              "id": 1,
+              "title": "Revisar requisitos do cliente",
+              "isDone": true
+            },
+            {
+              "id": 2,
+              "title": "Desenvolver backend para coleta de dados",
+              "isDone": false
+            },
+            {
+              "id": 3,
+              "title": "Testar visualizações de dados",
+              "isDone": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
