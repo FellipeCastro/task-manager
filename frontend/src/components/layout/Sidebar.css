@@ -28,38 +28,64 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: .5em;
-    color: #8A8A8A;
+    gap: 1em;
     cursor: pointer;
+}
+
+.board svg {
+    font-size: 2em;
+    color: #8A8A8A;
+}
+
+.board span {
+    color: #8A8A8A;
+    width: 100%;
 }
 
 .board:hover .delete-btn {
     opacity: 1;
     pointer-events: all;
+    transition: .3s;
 }
 
 .delete-btn {
     border: none;
     background: transparent;
-    font-size: 1em;
     color: #8A8A8A;
     padding: .5em;
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
-    transition: .5;
+}
+
+.delete-btn svg {
+    font-size: 1.5em;
 }
 
 .active {
     background: #635EC5;
-    color: #fff;
     border-radius: 0 2em 2em 0;
+}
+
+.active svg {
+    color: #fff;
+}
+
+.active span {
+    color: #fff;
 }
 
 .active .delete-btn {
     color: #fff;
 }
 
-.new-board {
+.new-board svg,
+.new-board span {
     color: #635EC5;
+}
+
+.new-board:hover svg,
+.new-board:hover span {
+    color: #8A8A8A;
+    transition: .5s;
 }

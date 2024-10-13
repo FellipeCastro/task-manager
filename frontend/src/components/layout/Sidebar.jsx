@@ -11,28 +11,28 @@ const Sidebar = () => {
 
             <div className="boards">
                 <div className="board active">
-                    <MdOutlineDashboard /> Lançamento da plataforma 
+                    <MdOutlineDashboard /> <span>Lançamento da plataforma</span> 
                     
                     <button className="delete-btn">
                         <FaTrashAlt />
                     </button>
                 </div>
                 <div className="board">
-                    <MdOutlineDashboard /> Lançamento da plataforma
+                    <MdOutlineDashboard /> <span>Lançamento da plataforma</span>
 
                     <button className="delete-btn">
                         <FaTrashAlt />
                     </button>
                 </div>
                 <div className="board">
-                    <MdOutlineDashboard /> Lançamento da plataforma
+                    <MdOutlineDashboard /> <span>Lançamento da plataforma</span>
 
                     <button className="delete-btn">
                         <FaTrashAlt />
                     </button>
                 </div>
                 <div className="board new-board">
-                    <MdOutlineDashboard /> +Criar novo projeto
+                    <MdOutlineDashboard /> <span>+Criar novo projeto</span>
                 </div>
             </div>
         </aside>
