@@ -3,51 +3,42 @@ import { FaXmark } from "react-icons/fa6"
 
 import "./TaskModal.css"
 
-const TaskModal = () => {
+const TaskModal = ({ task, setShowTaskModal }) => {
+    if (!task) return null
+    const countCompletedSubtasks = (subtasks) => {
+        return subtasks.filter((subtask) => subtask.isDone).length;
+    }
+
     return (
         <>
-            <div className="fade"></div>
+            <div className="fade" onClick={() => setShowTaskModal(false)}></div>
             <div className="task-modal">
                 <div className="title-container">
-                    <h4>Fazer tafera tal</h4>
-                    
+                    <h4>{task.title}</h4>
+
                     <button className="delete-task-btn">
                         <FaTrashAlt />
                     </button>
                 </div>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus vitae quibusdam doloremque quisquam facere. Animi ab quo excepturi necessitatibus praesentium odit ducimus saepe! Voluptate, libero! Eius ducimus iste nemo officia.</p>
+                <p>{task.description}</p>
 
-                <h5>Subtarefas (1 de 3)</h5>
+                <h5>Subtarefas ({countCompletedSubtasks(task.subtasks)} de {task.subtasks.length})</h5>
 
                 <div className="subtasks">
-                    <div className="subtask done">
-                        <button className="subtask-btn">
-                            <FaXmark />
-                        </button>
-
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </span>
-                    </div>
-
-                    <div className="subtask">
-                        <button className="subtask-btn">
-                            <FaCheck />
-                        </button>
-
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </span>
-                    </div>
-
-                    <div className="subtask">
-                        <button className="subtask-btn">
-                            <FaCheck />
-                        </button>
-
-                        <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. </span>
-                    </div>
+                    {task.subtasks.map((subtask) => {
+                        return (
+                            <div key={subtask.id} className={`subtask ${subtask.isDone ? "done" : ""}`}>
+                                <button className="subtask-btn">
+                                    {subtask.isDone ? <FaXmark /> : <FaCheck />}
+                                </button>
+                                <span>{subtask.title}</span>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         </>
     )
 }
-  
+
 export default TaskModal
-  

@@ -1,6 +1,6 @@
 import "./MainBoard.css"
 
-const MainBoard = ({ activeBoard }) => {
+const MainBoard = ({ activeBoard, handleTaskClick }) => {
     if (!activeBoard) {
         return <div className="main-board"><h3>Selecione um projeto</h3></div>
     }
@@ -17,7 +17,6 @@ const MainBoard = ({ activeBoard }) => {
     const doneTasks = activeBoard.tasks.filter((task) => countCompletedSubtasks(task.subtasks) === task.subtasks.length)
 
     return (
-
         <div className="main-board">
             <div className="column">
                 <div className="title">
@@ -26,7 +25,7 @@ const MainBoard = ({ activeBoard }) => {
 
                 {todoTasks.map((task) => {
                     return (
-                        <div key={task.id} className="task">
+                        <div key={task.id} className="task" onClick={() => handleTaskClick(task)}>
                             <h4>{task.title}</h4>
                             <span>{countCompletedSubtasks(task.subtasks)} de {task.subtasks.length} subtarefas</span>
                         </div>
@@ -41,7 +40,7 @@ const MainBoard = ({ activeBoard }) => {
 
                 {doingTasks.map((task) => {
                     return (
-                        <div key={task.id} className="task">
+                        <div key={task.id} className="task" onClick={() => handleTaskClick(task)}>
                             <h4>{task.title}</h4>
                             <span>{countCompletedSubtasks(task.subtasks)} de {task.subtasks.length} subtarefas</span>
                         </div>
@@ -56,7 +55,7 @@ const MainBoard = ({ activeBoard }) => {
 
                 {doneTasks.map((task) => {
                     return (
-                        <div key={task.id} className="task">
+                        <div key={task.id} className="task" onClick={() => handleTaskClick(task)}>
                             <h4>{task.title}</h4>
                             <span>{countCompletedSubtasks(task.subtasks)} de {task.subtasks.length} subtarefas</span>
                         </div>

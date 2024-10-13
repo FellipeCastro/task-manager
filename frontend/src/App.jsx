@@ -2,15 +2,17 @@ import { useState, useEffect } from "react"
 import Header from "./components/layout/Header"
 import MainBoard from "./components/layout/MainBoard"
 import Sidebar from "./components/layout/Sidebar"
-// import TaskModal from "./components/layout/TaskModal"
 import AddBoardForm from "./components/layout/AddBoardForm"
 import AddTaskForm from "./components/layout/AddTaskForm"
+import TaskModal from "./components/layout/TaskModal"
 
 const App = () => {
   const [boards, setBoards] = useState([])
   const [activeBoardId, setActiveBoardId] = useState(null)
   const [showAddBoardForm, setShowAddBoardForm] = useState(false)
   const [showAddTaskForm, setShowAddTaskForm] = useState(false)
+  const [showTaskModal, setShowTaskModal] = useState(false)
+  const [selectedTask, setSelectedTask] = useState(null)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -45,6 +47,11 @@ const App = () => {
 
   const activeBoard = boards.find((board) => board.id === activeBoardId)
 
+  const handleTaskClick = (task) => {
+    setSelectedTask(task)
+    setShowTaskModal(true)
+  }
+
   return (
     <>
       <Sidebar
@@ -57,11 +64,12 @@ const App = () => {
 
       <div className="container">
         <Header activeBoard={activeBoard} setShowAddTaskForm={setShowAddTaskForm} />
-        <MainBoard activeBoard={activeBoard} />
+        <MainBoard activeBoard={activeBoard} handleTaskClick={handleTaskClick} />
       </div>
 
       {showAddBoardForm && <AddBoardForm setShowAddBoardForm={setShowAddBoardForm} addBoard={addBoard} />}
       {showAddTaskForm && <AddTaskForm setShowAddTaskForm={setShowAddTaskForm} />}
+      {showTaskModal && <TaskModal task={selectedTask} setShowTaskModal={setShowTaskModal} />}
     </>
   )
 }
