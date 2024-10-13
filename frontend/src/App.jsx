@@ -57,7 +57,7 @@ const App = () => {
 
       <div className="container">
         <Header activeBoard={activeBoard} setShowAddTaskForm={setShowAddTaskForm} />
-        <MainBoard />
+        <MainBoard activeBoard={activeBoard} />
       </div>
 
       {showAddBoardForm && <AddBoardForm setShowAddBoardForm={setShowAddBoardForm} addBoard={addBoard} />}

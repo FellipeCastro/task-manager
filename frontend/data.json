@@ -67,12 +67,12 @@
               {
                 "id": 2,
                 "title": "Criar vídeos curtos",
-                "isDone": false
+                "isDone": true
               },
               {
                 "id": 3,
                 "title": "Agendar postagens",
-                "isDone": false
+                "isDone": true
               }
             ]
           },
