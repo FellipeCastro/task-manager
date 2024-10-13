@@ -3,13 +3,14 @@ import Header from "./components/layout/Header"
 import MainBoard from "./components/layout/MainBoard"
 import Sidebar from "./components/layout/Sidebar"
 // import TaskModal from "./components/layout/TaskModal"
-// import AddTaskForm from "./components/layout/AddTaskForm"
 import AddBoardForm from "./components/layout/AddBoardForm"
+import AddTaskForm from "./components/layout/AddTaskForm"
 
 const App = () => {
   const [boards, setBoards] = useState([])
   const [activeBoardId, setActiveBoardId] = useState(null)
   const [showAddBoardForm, setShowAddBoardForm] = useState(false)
+  const [showAddTaskForm, setShowAddTaskForm] = useState(false)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,6 +43,8 @@ const App = () => {
     setActiveBoardId(newBoard.id)
   }
 
+  const activeBoard = boards.find((board) => board.id === activeBoardId)
+
   return (
     <>
       <Sidebar
@@ -53,11 +56,12 @@ const App = () => {
       />
 
       <div className="container">
-        <Header />
+        <Header activeBoard={activeBoard} setShowAddTaskForm={setShowAddTaskForm} />
         <MainBoard />
       </div>
 
       {showAddBoardForm && <AddBoardForm setShowAddBoardForm={setShowAddBoardForm} addBoard={addBoard} />}
+      {showAddTaskForm && <AddTaskForm setShowAddTaskForm={setShowAddTaskForm} />}
     </>
   )
 }

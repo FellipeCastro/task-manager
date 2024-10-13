@@ -2,10 +2,10 @@ import { FaXmark } from "react-icons/fa6"
 
 import "./AddTaskForm.css"
 
-const AddTaskForm = () => {
+const AddTaskForm = ({ setShowAddTaskForm }) => {
     return (
         <>
-            <div className="fade"></div>
+            <div className="fade" onClick={() => setShowAddTaskForm(false)}></div>
             <div className="add-task-form">
                 <h2>Adicionar nova tarefa</h2>
 

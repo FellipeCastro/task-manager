@@ -1,11 +1,11 @@
 import "./Header.css"
 
-const Header = () => {
+const Header = ({ activeBoard, setShowAddTaskForm }) => {
     return (
         <header className="header">
-            <h2>Lançamento da nova plataforma</h2>
+            <h2>{activeBoard ? activeBoard.title : "Nenhum projeto selecionado"}</h2>
 
-            <a href="#" className="btn">+Adicionar tarefa</a>
+            <button className="btn" onClick={() => setShowAddTaskForm(true)}>+Adicionar tarefa</button>
         </header>
     )
 }
