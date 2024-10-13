@@ -1,43 +1,38 @@
-import { MdOutlineDashboard } from "react-icons/md"
-import { FaTrashAlt } from "react-icons/fa"
+import { useState } from "react";
+import { MdOutlineDashboard } from "react-icons/md";
+import { FaTrashAlt } from "react-icons/fa";
 
-import "./Sidebar.css"
+import "./Sidebar.css";
 
-const Sidebar = () => {
+const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShowAddBoardForm }) => {
+    const toggleBoard = (id) => {
+        setActiveBoardId(id)
+    }
+
     return (
         <aside className="aside">
             <h1>TaskManager</h1>
-            <span>Todos projetos (8)</span>
+            <span>Todos projetos ({boards.length})</span>
 
             <div className="boards">
-                <div className="board active">
-                    <MdOutlineDashboard /> <span>Lançamento da plataforma</span> 
-                    
-                    <button className="delete-btn">
-                        <FaTrashAlt />
-                    </button>
-                </div>
-                <div className="board">
-                    <MdOutlineDashboard /> <span>Lançamento da plataforma</span>
+                {boards.map((board) => {
+                    return (
+                        <div key={board.id} className={`board ${activeBoardId === board.id ? 'active' : ''}`} onClick={() => toggleBoard(board.id)}>
+                            <MdOutlineDashboard /> <span>{board.title}</span>
 
-                    <button className="delete-btn">
-                        <FaTrashAlt />
-                    </button>
-                </div>
-                <div className="board">
-                    <MdOutlineDashboard /> <span>Lançamento da plataforma</span>
+                            <button className="delete-btn" onClick={() => {deleteBoard(board.id)}}>
+                                <FaTrashAlt />
+                            </button>
+                        </div>
+                    );
+                })}
 
-                    <button className="delete-btn">
-                        <FaTrashAlt />
-                    </button>
-                </div>
-                <div className="board new-board">
+                <div className="board new-board" onClick={() => setShowAddBoardForm(true)}>
                     <MdOutlineDashboard /> <span>+Criar novo projeto</span>
                 </div>
             </div>
         </aside>
     )
 }
-  
+
 export default Sidebar
-  

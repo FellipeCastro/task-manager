@@ -2,7 +2,7 @@
     "boards": [
       {
         "id": 1,
-        "name": "Platform Launch",
+        "title": "Platform Launch",
         "tasks": [
           {
             "id": 1,
@@ -52,7 +52,7 @@
       },
       {
         "id": 2,
-        "name": "Marketing Plan",
+        "title": "Marketing Plan",
         "tasks": [
           {
             "id": 1,
@@ -97,7 +97,7 @@
       },
       {
         "id": 3,
-        "name": "Roadmap",
+        "title": "Roadmap",
         "tasks": [
           {
             "id": 1,
