@@ -1,0 +1,123 @@
+{
+    "boards": [
+      {
+        "id": 1,
+        "name": "Platform Launch",
+        "tasks": [
+          {
+            "id": 1,
+            "title": "Fazer tarefa tal",
+            "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus vitae quibusdam doloremque quisquam facere.",
+            "subtasks": [
+              {
+                "id": 1,
+                "title": "Subtarefa 1",
+                "isDone": false
+              },
+              {
+                "id": 2,
+                "title": "Subtarefa 2",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "title": "Subtarefa 3",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Configurar API",
+            "description": "Conectar o backend com o frontend utilizando a API REST.",
+            "subtasks": [
+              {
+                "id": 1,
+                "title": "Criar rotas de autenticação",
+                "isDone": true
+              },
+              {
+                "id": 2,
+                "title": "Criar rotas de CRUD",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "title": "Testar rotas",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "name": "Marketing Plan",
+        "tasks": [
+          {
+            "id": 1,
+            "title": "Criar conteúdo para a campanha",
+            "description": "Criar conteúdos visuais e textos para a nova campanha de marketing.",
+            "subtasks": [
+              {
+                "id": 1,
+                "title": "Desenvolver posts para redes sociais",
+                "isDone": true
+              },
+              {
+                "id": 2,
+                "title": "Criar vídeos curtos",
+                "isDone": false
+              },
+              {
+                "id": 3,
+                "title": "Agendar postagens",
+                "isDone": false
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "title": "Analisar performance das campanhas",
+            "description": "Analisar o desempenho da campanha de marketing no último trimestre.",
+            "subtasks": [
+              {
+                "id": 1,
+                "title": "Coletar dados de conversão",
+                "isDone": true
+              },
+              {
+                "id": 2,
+                "title": "Gerar relatórios de ROI",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "name": "Roadmap",
+        "tasks": [
+          {
+            "id": 1,
+            "title": "Planejar próximos 6 meses",
+            "description": "Criar um roadmap para o desenvolvimento de novas funcionalidades para os próximos 6 meses.",
+            "subtasks": [
+              {
+                "id": 1,
+                "title": "Identificar principais necessidades do cliente",
+                "isDone": true
+              },
+              {
+                "id": 2,
+                "title": "Priorizar funcionalidades",
+                "isDone": false
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
