@@ -12,8 +12,14 @@
   background: #181818;
   color: #fff;
   display: flex;
+  flex-direction: column;
 }
 
 .container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-container {
   width: 100%;
 }

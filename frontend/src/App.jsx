@@ -7,6 +7,7 @@ import Sidebar from "./components/layout/Sidebar"
 import AddBoardForm from "./components/layout/AddBoardForm"
 import AddTaskForm from "./components/layout/AddTaskForm"
 import TaskModal from "./components/layout/TaskModal"
+import Footer from "./components/layout/Footer"
 
 const App = () => {
   const [boards, setBoards] = useState([])
@@ -126,24 +127,27 @@ const App = () => {
 
   return (
     <>
-      <Sidebar
-        boards={boards}
-        activeBoardId={activeBoardId}
-        setActiveBoardId={setActiveBoardId}
-        deleteBoard={deleteBoard}
-        setShowAddBoardForm={setShowAddBoardForm}
-      />
-
       <div className="container">
-        <Header
-          activeBoard={activeBoard}
-          setShowAddTaskForm={setShowAddTaskForm}
+        <Sidebar
+          boards={boards}
+          activeBoardId={activeBoardId}
+          setActiveBoardId={setActiveBoardId}
+          deleteBoard={deleteBoard}
+          setShowAddBoardForm={setShowAddBoardForm}
         />
-        <MainBoard
-          activeBoard={activeBoard}
-          handleTaskClick={handleTaskClick}
-        />
+        <div className="main-container">
+          <Header
+            activeBoard={activeBoard}
+            setShowAddTaskForm={setShowAddTaskForm}
+          />
+          <MainBoard
+            activeBoard={activeBoard}
+            handleTaskClick={handleTaskClick}
+          />
+        </div>
       </div>
+
+      <Footer />
 
       {showAddBoardForm && (
         <AddBoardForm
