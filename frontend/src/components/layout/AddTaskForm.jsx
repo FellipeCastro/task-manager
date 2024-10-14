@@ -1,45 +1,106 @@
+import { useState } from "react"
+
 import { FaXmark } from "react-icons/fa6"
 
 import "./AddTaskForm.css"
 
-const AddTaskForm = ({ setShowAddTaskForm }) => {
+const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
+    // State's para os valores do formulário
+    const [title, setTitle] = useState("")
+    const [description, setDescription] = useState("")
+    const [subtasks, setSubtasks] = useState([{ id: 1, title: "", isDone: false }])
+
+    // Função que atualiza o título da subtarefa conforme o usuário digita
+    const handleSubtaskChange = (index, value) => {
+        const newSubtasks = [...subtasks] // Cria uma cópia do array de subtarefas
+        newSubtasks[index].title = value // Atualiza o título da subtarefa no índice correspondente
+        setSubtasks(newSubtasks) // Define o novo array de subtarefas
+    }
+
+    // Função que adiciona uma nova subtarefa ao array de subtarefas
+    const addSubtask = () => {
+        setSubtasks([...subtasks, { id: subtasks.length + 1, title: "", isDone: false }])
+    }
+
+    // Função que remove uma subtarefa com base no índice passado
+    const removeSubtask = (index) => {
+        // Filtra o array de subtarefas, removendo a subtarefa do índice passado
+        setSubtasks(subtasks.filter((_, i) => i !== index))
+    }
+
+    const handleSubmit = (e) => {
+        e.preventDefault() // Previne o comportamento padrão de recarregar a página
+
+        // Cria um novo objeto de tarefa com os valores preenchidos no formulário
+        const newTask = {
+            id: Date.now(), 
+            title, 
+            description, 
+            subtasks, 
+        }
+
+        addTask(newTask) // Chama a função de adicionar tarefa
+        setShowAddTaskForm(false) // Fecha o formulário após adicionar a tarefa
+    }
+
     return (
         <>
             <div className="fade" onClick={() => setShowAddTaskForm(false)}></div>
             <div className="add-task-form">
                 <h2>Adicionar nova tarefa</h2>
 
-                <form method="post" className="form">
+                <form method="post" autoComplete="off" className="form" onSubmit={handleSubmit}>
                     <div className="input-container">
-                        <label htmlFor="title">Titulo</label>
-                        <input type="text" name="title" id="title" placeholder="Digite o titulo da tarefa aqui" />
+                        <label htmlFor="title">Título</label>
+                        <input
+                            type="text"
+                            name="title"
+                            id="title"
+                            placeholder="Digite o título da tarefa aqui"
+                            value={title}
+                            onChange={(e) => setTitle(e.target.value)}
+                        />
                     </div>
+
                     <div className="input-container">
                         <label htmlFor="description">Descrição</label>
-                        <textarea name="description" id="description" placeholder="Digite a descrição aqui"></textarea>
+                        <textarea
+                            name="description"
+                            id="description"
+                            placeholder="Digite a descrição aqui"
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
+                        ></textarea>
                     </div>
+
                     <span>Subtarefas</span>
                     <div className="sub-container">
-                        <div className="input-sub-container">
-                            <input type="text" name="subtask" placeholder="Digite sua subtarefa aqui" />
-                            <button className="delete-sub">
-                                <FaXmark />
-                            </button>
-                        </div>
-                        <div className="input-sub-container">
-                            <input type="text" name="subtask" placeholder="Digite sua subtarefa aqui" />
-                            <button className="delete-sub">
-                                <FaXmark />
-                            </button>
-                        </div>
+                        {subtasks.map((subtask, index) => (
+                            <div key={index} className="input-sub-container">
+                                <input
+                                    type="text"
+                                    name="subtask"
+                                    placeholder="Digite sua subtarefa aqui"
+                                    value={subtask.title}
+                                    onChange={(e) => handleSubtaskChange(index, e.target.value)}
+                                />
+                                <button type="button" className="delete-sub" onClick={() => removeSubtask(index)}>
+                                    <FaXmark />
+                                </button>
+                            </div>
+                        ))}
                     </div>
-                    <button className="new-sub-btn">+Adicionar nova subtarefa</button>
-                    <button className="submit-btn">Criar tarefa</button>
+
+                    <button type="button" className="new-sub-btn" onClick={addSubtask}>
+                        +Adicionar nova subtarefa
+                    </button>
+                    <button type="submit" className="submit-btn">
+                        Criar tarefa
+                    </button>
                 </form>
             </div>
         </>
     )
 }
-  
+
 export default AddTaskForm
-  

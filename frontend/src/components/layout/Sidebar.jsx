@@ -5,6 +5,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import "./Sidebar.css";
 
 const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShowAddBoardForm }) => {
+    // Função para mudar o board ativo
     const toggleBoard = (id) => {
         setActiveBoardId(id)
     }

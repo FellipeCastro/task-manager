@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 
+// Componentes
 import Header from "./components/layout/Header"
 import MainBoard from "./components/layout/MainBoard"
 import Sidebar from "./components/layout/Sidebar"
@@ -15,10 +16,13 @@ const App = () => {
   const [showTaskModal, setShowTaskModal] = useState(false)
   const [selectedTask, setSelectedTask] = useState(null)
 
+
+  // Fazendo a requisição da API sempre que a página é atualizada
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/data.json')
+      const response = await fetch("/data.json")
       const result = await response.json()
+      // Povoando o state com o resultado gerado
       setBoards(result.boards)
     }
 
@@ -26,6 +30,7 @@ const App = () => {
   }, [])
 
   const deleteBoard = (id) => {
+    // Filtrando os boards em que o id é deifenrente do id passado como parametro
     const updatedBoards = boards.filter(board => board.id !== id)
     setBoards(updatedBoards)
 
@@ -36,53 +41,86 @@ const App = () => {
   }
 
   const addBoard = (newBoardTitle) => {
+    // Criando novo board com o title passado como parametro
     const newBoard = {
       id: boards.length + 1,
       title: newBoardTitle,
       tasks: [],
     }
 
+    // Adicionando novo board no state
     setBoards([...boards, newBoard])
     setActiveBoardId(newBoard.id)
   }
 
+  // Definindo board ativo com base no activeBoardId
   const activeBoard = boards.find((board) => board.id === activeBoardId)
 
+
+  // Função para mostrar o modal da tarefa clicada
   const handleTaskClick = (task) => {
     setSelectedTask(task)
     setShowTaskModal(true)
   }
 
-  // estudar
   const updateTask = (updatedTask) => {
     const updatedBoards = boards.map((board) => {
+      // Verifica se o board é o ativo
       if (board.id === activeBoardId) {
         return {
           ...board,
+          // Atualiza a lista de tarefas do board
           tasks: board.tasks.map((task) =>
+            // Substitui a tarefa correspondente pelo updatedTask
             task.id === updatedTask.id ? updatedTask : task
           )
         }
       }
+      // Se o board não for o ativo, retorna o board original
       return board
     })
+    // Atualiza a lista de boards com o board que contém a tarefa atualizada
     setBoards(updatedBoards)
+    // Define a tarefa selecionada como a tarefa atualizada
     setSelectedTask(updatedTask)
   }
 
-  // estudar
+
   const deleteTask = (taskId) => {
     const updatedBoards = boards.map((board) => {
+      // Verifica se o board é o ativo
       if (board.id === activeBoardId) {
         return {
           ...board,
+          // Remove a tarefa com o ID correspondente da lista de tarefas
           tasks: board.tasks.filter((task) => task.id !== taskId)
         }
       }
+      // Se o board não for o ativo, retorna o board original
       return board
     })
+    // Atualiza a lista de boards sem a tarefa deletada
     setBoards(updatedBoards)
+    // Fecha o modal de exibição de tarefas
     setShowTaskModal(false)
+  }
+
+
+  const addTask = (newTask) => {
+    const updatedBoards = boards.map((board) => {
+      // Verifica se o board é o ativo
+      if (board.id === activeBoardId) {
+        return {
+          ...board,
+          // Adiciona a nova tarefa à lista de tarefas
+          tasks: [...board.tasks, newTask],
+        }
+      }
+      // Se o board não for o ativo, retorna o board original
+      return board
+    })
+    // Atualiza a lista de boards com a nova tarefa adicionada
+    setBoards(updatedBoards)
   }
 
 
@@ -97,13 +135,37 @@ const App = () => {
       />
 
       <div className="container">
-        <Header activeBoard={activeBoard} setShowAddTaskForm={setShowAddTaskForm} />
-        <MainBoard activeBoard={activeBoard} handleTaskClick={handleTaskClick} />
+        <Header
+          activeBoard={activeBoard}
+          setShowAddTaskForm={setShowAddTaskForm}
+        />
+        <MainBoard
+          activeBoard={activeBoard}
+          handleTaskClick={handleTaskClick}
+        />
       </div>
 
-      {showAddBoardForm && <AddBoardForm setShowAddBoardForm={setShowAddBoardForm} addBoard={addBoard} />}
-      {showAddTaskForm && <AddTaskForm setShowAddTaskForm={setShowAddTaskForm} />}
-      {showTaskModal && <TaskModal task={selectedTask} setShowTaskModal={setShowTaskModal} updateTask={updateTask} deleteTask={deleteTask} />}
+      {showAddBoardForm && (
+        <AddBoardForm
+          setShowAddBoardForm={setShowAddBoardForm}
+          addBoard={addBoard}
+        />
+      )}
+      {showAddTaskForm && (
+        <AddTaskForm
+          setShowAddTaskForm={setShowAddTaskForm}
+          addTask={addTask}
+          activeBoardId={activeBoardId}
+        />
+      )}
+      {showTaskModal && (
+        <TaskModal
+          task={selectedTask}
+          setShowTaskModal={setShowTaskModal}
+          updateTask={updateTask}
+          deleteTask={deleteTask}
+        />
+      )}
     </>
   )
 }

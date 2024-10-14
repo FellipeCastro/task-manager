@@ -1,19 +1,25 @@
 import "./MainBoard.css"
 
 const MainBoard = ({ activeBoard, handleTaskClick }) => {
+    // Verificande se nenhum board esta ativo
     if (!activeBoard) {
         return <div className="main-board"><h3>Selecione um projeto</h3></div>
     }
 
+    // Contando as subtasks completas
     const countCompletedSubtasks = (subtasks) => {
+        // filtrando as subtasks em que isDone é verdadeiro
         return subtasks.filter((subtask) => subtask.isDone).length
     }
 
+    // Definindo tarefas em que nenhuma subtask esta completa como 'afazer'
     const todoTasks = activeBoard.tasks.filter((task) => countCompletedSubtasks(task.subtasks) === 0)
+    // Definindo tarefas em que as tarefas completas são maior que 0 e menos que o total de subtasks como 'fazendo'
     const doingTasks = activeBoard.tasks.filter((task) => {
         const completed = countCompletedSubtasks(task.subtasks)
         return completed > 0 && completed < task.subtasks.length
     })
+    // Definindo tarefas em que todas subtasks estão completas como 'feitas'
     const doneTasks = activeBoard.tasks.filter((task) => countCompletedSubtasks(task.subtasks) === task.subtasks.length)
 
     return (

@@ -3,21 +3,29 @@ import { FaCheck, FaTrashAlt } from "react-icons/fa"
 import "./TaskModal.css"
 
 const TaskModal = ({ task, setShowTaskModal, updateTask, deleteTask }) => {
+    // Verifica se a taks existe
     if (!task) return null
+
+    // Função que conta quantas subtarefas foram concluídas
     const countCompletedSubtasks = (subtasks) => {
+        // Filtra as subtarefas e retorna apenas as concluídas
         return subtasks.filter((subtask) => subtask.isDone).length
     }
 
-    // estudar
+    // Função para alternar o estado de conclusão (isDone) de uma subtarefa
     const toggleSubtask = (subtaskId) => {
+        // Mapeia as subtarefas e alterna o valor de 'isDone' da subtarefa correspondente ao ID
         const updatedSubtasks = task.subtasks.map((subtask) =>
             subtask.id === subtaskId ? { ...subtask, isDone: !subtask.isDone } : subtask
         )
+
+        // Cria uma nova tarefa com as subtarefas atualizadas
         const updatedTask = { ...task, subtasks: updatedSubtasks }
 
-        // Chama a função de atualização de task no componente App
+        // Chama a função updateTask para atualizar a tarefa com as subtarefas modificadas
         updateTask(updatedTask)
     }
+
 
     return (
         <>
