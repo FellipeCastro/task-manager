@@ -29,6 +29,26 @@
 }
 
 .footer ul li:hover {
-    color: #fff;
+    color: #635EC5;
     transform: translateX(.5em);
+}
+
+@media (max-width: 760px) {
+    .footer {
+        flex-direction: column;
+    }
+
+    .footer ul {
+        border-left: none;
+        border-top: 2px solid #8A8A8A;
+        margin-left: 0;
+        margin-top: 2em;
+        padding: 2em;
+    }
+}
+
+@media (max-width: 330px) {
+    .footer ul li {
+        font-size: .8em;
+    }
 }

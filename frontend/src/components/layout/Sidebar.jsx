@@ -1,17 +1,19 @@
-import { useState } from "react";
-import { MdOutlineDashboard } from "react-icons/md";
-import { FaTrashAlt } from "react-icons/fa";
+import { useState } from "react"
+
+import { MdOutlineDashboard } from "react-icons/md"
+import { FaTrashAlt } from "react-icons/fa"
 
 import "./Sidebar.css";
 
-const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShowAddBoardForm }) => {
+const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShowAddBoardForm, isOpen, setIsOpen }) => {
     // Função para mudar o board ativo
     const toggleBoard = (id) => {
         setActiveBoardId(id)
+        setIsOpen(false)
     }
 
     return (
-        <aside className="aside">
+        <aside className={isOpen ? "aside open" : "aside"}>
             <h1>TaskManager</h1>
             <span>Todos projetos ({boards.length})</span>
 

@@ -1,4 +1,4 @@
-import { FaFacebook, FaInstagram, FaWhatsapp } from "react-icons/fa"
+import { FaFacebook, FaLinkedin, FaWhatsapp } from "react-icons/fa"
 
 import "./Footer.css"
 
@@ -9,8 +9,8 @@ const Footer = () => {
 
         <ul>
             <li><FaFacebook /> - TaskManager Oficial</li>
-            <li><FaInstagram /> - taskmanager_oficial</li>
-            <li><FaWhatsapp /> - (11) 00000-0000</li>
+            <li><FaLinkedin /> - TaskManager</li>
+            <li><FaWhatsapp /> - (00) 00000-0000</li>
         </ul>
     </footer>
   )

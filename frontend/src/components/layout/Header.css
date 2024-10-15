@@ -7,6 +7,19 @@
     justify-content: space-between;
 }
 
+.header h2 {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5em;
+}
+
+.header h2 span {
+    font-size: 1em;
+    display: none;
+}
+
 .btn {
     background: #635EC5;
     color: #fff;
@@ -22,4 +35,23 @@
 .btn:hover {
     background: transparent;
     color: #635EC5;
+}
+
+@media (max-width: 1290px) {
+    .header h2 span {
+        display: block;
+    }
+}
+
+@media (max-width: 760px) {
+    .header h2 {
+        width: 60%;
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .btn {
+        padding: 1em;
+        font-size: .8em;
+    }
 }

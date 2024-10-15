@@ -16,6 +16,7 @@ const App = () => {
   const [showAddTaskForm, setShowAddTaskForm] = useState(false)
   const [showTaskModal, setShowTaskModal] = useState(false)
   const [selectedTask, setSelectedTask] = useState(null)
+  const [isOpen, setIsOpen] = useState(false)
 
 
   // Fazendo a requisição da API sempre que a página é atualizada
@@ -39,6 +40,8 @@ const App = () => {
     if (activeBoardId === id) {
       setActiveBoardId(null)
     }
+
+    setIsOpen(false)
   }
 
   const addBoard = (newBoardTitle) => {
@@ -52,6 +55,8 @@ const App = () => {
     // Adicionando novo board no state
     setBoards([...boards, newBoard])
     setActiveBoardId(newBoard.id)
+
+    setIsOpen(false)
   }
 
   // Definindo board ativo com base no activeBoardId
@@ -134,11 +139,14 @@ const App = () => {
           setActiveBoardId={setActiveBoardId}
           deleteBoard={deleteBoard}
           setShowAddBoardForm={setShowAddBoardForm}
+          isOpen={isOpen}
+          setIsOpen={setIsOpen}
         />
         <div className="main-container">
           <Header
             activeBoard={activeBoard}
             setShowAddTaskForm={setShowAddTaskForm}
+            setIsOpen={setIsOpen}
           />
           <MainBoard
             activeBoard={activeBoard}

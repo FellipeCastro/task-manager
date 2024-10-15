@@ -1,12 +1,13 @@
 .main-board {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1em;
     padding: 2em;
 }
 
 .column {
-    width: 300px;
+    width: 100%;
 }
 
 .title {
@@ -46,6 +47,7 @@ span.done {
 }
 
 .task {
+    width: 100%;
     background: #1F1F1F;
     margin-bottom: 1em;
     padding: 1em 2em;
@@ -64,4 +66,13 @@ span.done {
 
 .task span {
     color: #8A8A8A;
+}
+
+
+
+@media (max-width: 1000px) {
+    .main-board {
+        display: flex;
+        flex-direction: column;
+    }
 }
