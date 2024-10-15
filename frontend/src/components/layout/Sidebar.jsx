@@ -2,10 +2,11 @@ import { useState } from "react"
 
 import { MdOutlineDashboard } from "react-icons/md"
 import { FaTrashAlt } from "react-icons/fa"
+import { CiLight, CiDark  } from "react-icons/ci"
 
 import "./Sidebar.css";
 
-const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShowAddBoardForm, isOpen, setIsOpen }) => {
+const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShowAddBoardForm, isOpen, setIsOpen, darkMode, toggleMode }) => {
     // Função para mudar o board ativo
     const toggleBoard = (id) => {
         setActiveBoardId(id)
@@ -14,8 +15,8 @@ const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShow
 
     return (
         <aside className={isOpen ? "aside open" : "aside"}>
-            <h1>TaskManager</h1>
-            <span>Todos projetos ({boards.length})</span>
+            <h1>TaskManager <button className="mode-btn" onClick={toggleMode}>{darkMode ? <CiLight /> : <CiDark />}</button></h1>
+            <span>Todos painéis ({boards.length})</span>
 
             <div className="boards">
                 {boards.map((board) => {
@@ -31,7 +32,7 @@ const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShow
                 })}
 
                 <div className="board new-board" onClick={() => setShowAddBoardForm(true)}>
-                    <MdOutlineDashboard /> <span>+Criar novo projeto</span>
+                    <MdOutlineDashboard /> <span>+Criar novo painel</span>
                 </div>
             </div>
         </aside>

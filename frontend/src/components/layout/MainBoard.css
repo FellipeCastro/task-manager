@@ -21,7 +21,7 @@
 .title span {
     height: 15px;
     width: 15px;
-    background-color: #8A8A8A;
+    background-color: var(--text-secondary-color);
     border-radius: 50%;
 }
 
@@ -42,22 +42,18 @@ span.done {
 }
 
 .title h3 {
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
     font-size: 1em;
 }
 
 .task {
     width: 100%;
-    background: #1F1F1F;
+    background: var(--secondary-color);
     margin-bottom: 1em;
     padding: 1em 2em;
     border-radius: .5em;
     cursor: pointer;
-    transition: .5s;
-}
-
-.task:hover {
-    transform: scale(1.05);
+    box-shadow: 0 0 1em var(--shadow-color);
 }
 
 .task h4 {
@@ -65,7 +61,7 @@ span.done {
 }
 
 .task span {
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
 }
 
 

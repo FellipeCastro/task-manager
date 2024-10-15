@@ -3,7 +3,7 @@ import "./MainBoard.css"
 const MainBoard = ({ activeBoard, handleTaskClick }) => {
     // Verificande se nenhum board esta ativo
     if (!activeBoard) {
-        return <div className="main-board"><h3>Selecione um projeto</h3></div>
+        return <div className="main-board"><h3>Selecione um painel</h3></div>
     }
 
     // Contando as subtasks completas

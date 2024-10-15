@@ -17,6 +17,7 @@ const App = () => {
   const [showTaskModal, setShowTaskModal] = useState(false)
   const [selectedTask, setSelectedTask] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
+  const [darkMode, setDarkMode] = useState(true)
 
 
   // Fazendo a requisição da API sempre que a página é atualizada
@@ -26,6 +27,11 @@ const App = () => {
       const result = await response.json()
       // Povoando o state com o resultado gerado
       setBoards(result.boards)
+
+      // Definir o primeiro board como ativo automaticamente, se existir
+      if (result.boards.length > 0) {
+        setActiveBoardId(result.boards[0].id)
+      }
     }
 
     fetchData()
@@ -129,6 +135,11 @@ const App = () => {
     setBoards(updatedBoards)
   }
 
+  const toggleMode = () => {
+    setDarkMode(!darkMode)
+    const html = document.querySelector("html")
+    html.classList.toggle("light-mode")
+  }
 
   return (
     <>
@@ -141,6 +152,8 @@ const App = () => {
           setShowAddBoardForm={setShowAddBoardForm}
           isOpen={isOpen}
           setIsOpen={setIsOpen}
+          darkMode={darkMode}
+          toggleMode={toggleMode}
         />
         <div className="main-container">
           <Header

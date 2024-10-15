@@ -1,8 +1,8 @@
 .footer {
     width: 100%;
-    background: #1F1F1F;
+    background: var(--secondary-color);
     padding: 2em;
-    box-shadow: 0 0 10px #00000030;
+    box-shadow: 0 0 1em var(--shadow-color);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -16,20 +16,20 @@
     list-style: none;
     margin-left: 2em;
     padding: 1em 2em;
-    border-left: 2px solid #8A8A8A;
+    border-left: 2px solid var(--text-secondary-color);
     display: flex;
     flex-direction: column;
     gap: 1em;
 }
 
 .footer ul li {
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
     cursor: pointer;
     transition: .5s;
 }
 
 .footer ul li:hover {
-    color: #635EC5;
+    color: var(--primary-color);
     transform: translateX(.5em);
 }
 
@@ -40,7 +40,7 @@
 
     .footer ul {
         border-left: none;
-        border-top: 2px solid #8A8A8A;
+        border-top: 2px solid var(--text-secondary-color);
         margin-left: 0;
         margin-top: 2em;
         padding: 2em;

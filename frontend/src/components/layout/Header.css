@@ -1,18 +1,19 @@
 .header {
     width: 100%;
-    background: #1F1F1F;
+    background: var(--secondary-color);
     padding: 2em;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    box-shadow: 0 0 1em var(--shadow-color);
 }
 
 .header h2 {
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: .5em;
+    cursor: pointer;
 }
 
 .header h2 span {
@@ -21,9 +22,9 @@
 }
 
 .btn {
-    background: #635EC5;
-    color: #fff;
-    border: 1px solid #635EC5;
+    background: var(--primary-color);
+    color: #FFF;
+    border: 1px solid var(--primary-color);
     border-radius: 2em;
     padding: 1em 2em;
     text-decoration: none;
@@ -34,10 +35,10 @@
 
 .btn:hover {
     background: transparent;
-    color: #635EC5;
+    color: var(--primary-color);
 }
 
-@media (max-width: 1290px) {
+@media (max-width: 1290px) {    
     .header h2 span {
         display: block;
     }

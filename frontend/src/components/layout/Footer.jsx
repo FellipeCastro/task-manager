@@ -8,8 +8,8 @@ const Footer = () => {
         <h1>TaskManager</h1>
 
         <ul>
-            <li><FaFacebook /> - TaskManager Oficial</li>
             <li><FaLinkedin /> - TaskManager</li>
+            <li><FaFacebook /> - TaskManager Oficial</li>
             <li><FaWhatsapp /> - (00) 00000-0000</li>
         </ul>
     </footer>

@@ -1,16 +1,28 @@
 .aside {
-    background: #1F1F1F;
+    background: var(--secondary-color);
     padding: 2em;
-    box-shadow: 0 0 10px #00000030;
+    box-shadow: 0 0 1em var(--shadow-color);
     z-index: 7;
 }
 
 .aside h1 {
     margin-bottom: 1.5em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.mode-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary-color);
+    font-size: 1.2em;
+    cursor: pointer;
 }
 
 .aside span {
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
 }
 
 .boards {
@@ -34,11 +46,11 @@
 
 .board svg {
     font-size: 32px;
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
 }
 
 .board span {
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
     width: 100%;
 }
 
@@ -51,7 +63,7 @@
 .delete-btn {
     border: none;
     background: transparent;
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
     padding: .5em;
     cursor: pointer;
     opacity: 0;
@@ -63,30 +75,28 @@
 }
 
 .active {
-    background: #635EC5;
+    background: var(--primary-color);
     border-radius: 0 2em 2em 0;
 }
 
-.active svg {
-    color: #fff;
-}
-
-.active span {
-    color: #fff;
-}
-
+.active svg,
+.active span, 
 .active .delete-btn {
-    color: #fff;
+    color: #FFF;
+}
+
+.new-board {
+    width: 300px;
 }
 
 .new-board svg,
 .new-board span {
-    color: #635EC5;
+    color: var(--primary-color);
 }
 
 .new-board:hover svg,
 .new-board:hover span {
-    color: #8A8A8A;
+    color: var(--text-secondary-color);
     transition: .5s;
 }
 
