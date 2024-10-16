@@ -25,7 +25,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
 }
 
 .title-container h4 {
@@ -123,5 +123,10 @@
 
     .subtask span {
         font-size: .8em;
+    }
+
+    .subtask-btn {
+        height: 20px;
+        width: 20px;
     }
 }

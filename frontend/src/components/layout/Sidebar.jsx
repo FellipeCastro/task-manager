@@ -1,8 +1,6 @@
-import { useState } from "react"
-
 import { MdOutlineDashboard } from "react-icons/md"
 import { FaTrashAlt } from "react-icons/fa"
-import { CiLight, CiDark  } from "react-icons/ci"
+import { MdOutlineDarkMode, MdOutlineLightMode } from "react-icons/md"
 
 import "./Sidebar.css";
 
@@ -15,7 +13,7 @@ const Sidebar = ({ boards, activeBoardId, setActiveBoardId, deleteBoard, setShow
 
     return (
         <aside className={isOpen ? "aside open" : "aside"}>
-            <h1>TaskManager <button className="mode-btn" onClick={toggleMode}>{darkMode ? <CiLight /> : <CiDark />}</button></h1>
+            <h1>TaskManager <button className="mode-btn" onClick={toggleMode}>{darkMode ? <MdOutlineLightMode /> : <MdOutlineDarkMode />}</button></h1>
             <span>Todos painéis ({boards.length})</span>
 
             <div className="boards">
