@@ -10,6 +10,11 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
     const [description, setDescription] = useState("")
     const [subtasks, setSubtasks] = useState([{ id: 1, title: "", isDone: false }])
 
+    // State para erros
+    const [titleError, setTitleError] = useState(false)
+    const [descriptionError, setDescriptionError] = useState(false)
+    const [subtaskError, setSubtaskError] = useState(false)
+
     // Função que atualiza o título da subtarefa conforme o usuário digita
     const handleSubtaskChange = (index, value) => {
         const newSubtasks = [...subtasks] // Cria uma cópia do array de subtarefas
@@ -31,17 +36,49 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
     const handleSubmit = (e) => {
         e.preventDefault() // Previne o comportamento padrão de recarregar a página
 
+        let hasError = false // Variável de controle de erro geral
+
+        // Validação do título
+        if (title === "") {
+            setTitleError(true)
+            hasError = true;
+        } else {
+            setTitleError(false)
+        }
+
+        // Validação da descrição
+        if (description === "") {
+            setDescriptionError(true)
+            hasError = true
+        } else {
+            setDescriptionError(false)
+        }
+
+        // Validação das subtarefas
+        const subtaskErrorExists = subtasks.some((subtask) => subtask.title === "");
+        if (subtaskErrorExists) {
+            setSubtaskError(true)
+            hasError = true
+        } else {
+            setSubtaskError(false)
+        }
+
+        if (hasError) {
+            return // Se houver erro, interrompe o fluxo de envio
+        }
+
         // Cria um novo objeto de tarefa com os valores preenchidos no formulário
         const newTask = {
-            id: Date.now(), 
-            title, 
-            description, 
-            subtasks, 
+            id: Date.now(),
+            title,
+            description,
+            subtasks,
         }
 
         addTask(newTask) // Chama a função de adicionar tarefa
         setShowAddTaskForm(false) // Fecha o formulário após adicionar a tarefa
     }
+
 
     return (
         <>
@@ -50,7 +87,7 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
                 <h2>Adicionar nova tarefa</h2>
 
                 <form method="post" autoComplete="off" className="form" onSubmit={handleSubmit}>
-                    <div className="input-container">
+                    <div className={`input-container ${titleError ? "error" : ""}`}>
                         <label htmlFor="title">Título</label>
                         <input
                             type="text"
@@ -60,9 +97,10 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
                             value={title}
                             onChange={(e) => setTitle(e.target.value)}
                         />
+                        <span>Digite o titulo para prosseguir</span>
                     </div>
 
-                    <div className="input-container">
+                    <div className={`input-container ${descriptionError ? "error" : ""}`}>
                         <label htmlFor="description">Descrição</label>
                         <textarea
                             name="description"
@@ -70,23 +108,27 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
                             placeholder="Digite a descrição aqui"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                        ></textarea>
+                        />
+                        <span>Digite a descrição para prosseguir</span>
                     </div>
 
-                    <span>Subtarefas</span>
                     <div className="sub-container">
+                        <span className="label">Subtarefas</span>
                         {subtasks.map((subtask, index) => (
-                            <div key={index} className="input-sub-container">
-                                <input
-                                    type="text"
-                                    name="subtask"
-                                    placeholder="Digite sua subtarefa aqui"
-                                    value={subtask.title}
-                                    onChange={(e) => handleSubtaskChange(index, e.target.value)}
-                                />
-                                <button type="button" className="delete-sub" onClick={() => removeSubtask(index)}>
-                                    <FaXmark />
-                                </button>
+                            <div key={index} className={`input-sub-container ${subtaskError ? "error" : ""}`}>
+                                <div className="input-btn-container">
+                                    <input
+                                        type="text"
+                                        name="subtask"
+                                        placeholder="Digite sua subtarefa aqui"
+                                        value={subtask.title}
+                                        onChange={(e) => handleSubtaskChange(index, e.target.value)}
+                                    />
+                                    <button type="button" className="delete-sub" onClick={() => removeSubtask(index)}>
+                                        <FaXmark />
+                                    </button>
+                                </div>
+                                <span>Digite o titulo para prosseguir</span>
                             </div>
                         ))}
                     </div>
