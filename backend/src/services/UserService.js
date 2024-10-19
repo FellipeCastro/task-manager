@@ -23,7 +23,7 @@ class UserService {
         if (await bcrypt.compare(password, result.password)) {
             delete result.password
 
-            result.token = Token.Create(result.id_user)
+            result.token = Token.Create(result.id)
 
             return result
         }
