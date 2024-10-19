@@ -16,6 +16,14 @@ class BoardRepository {
 
         return { id_board: result.insertId }
     }
+
+    async Delete(id_board) {
+        const sql = "DELETE FROM boards WHERE id = ?"
+
+        await consult(sql, [id_board])
+
+        return { id_board }
+    }
 }
 
 export default new BoardRepository()

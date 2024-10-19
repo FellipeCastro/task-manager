@@ -14,5 +14,6 @@ router.get("/users/profile", Token.Validate, UserController.Profile)
 //Boards
 router.get("/boards", Token.Validate, BoardController.List)
 router.post("/boards", Token.Validate, BoardController.Insert)
+router.delete("/boards/:id_board", Token.Validate, BoardController.Delete)
 
 export default router

@@ -12,6 +12,12 @@ class BoardService {
 
         return result
     }
+
+    async Delete(id_board) {
+        const result = await BoardRepository.Delete(id_board)
+
+        return result
+    }
 }
 
 export default new BoardService()
