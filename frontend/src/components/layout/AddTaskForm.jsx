@@ -83,7 +83,7 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
     return (
         <>
             <div className="fade" onClick={() => setShowAddTaskForm(false)}></div>
-            <div className="add-task-form">
+            <div className="container-form">
                 <h2>Adicionar nova tarefa</h2>
 
                 <form method="post" autoComplete="off" className="form" onSubmit={handleSubmit}>

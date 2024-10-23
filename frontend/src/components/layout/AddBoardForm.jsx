@@ -26,7 +26,7 @@ const AddBoardForm = ({ setShowAddBoardForm, addBoard }) => {
     return (
         <>
             <div className="fade" onClick={() => setShowAddBoardForm(false)}></div>
-            <div className="add-task-form">
+            <div className="container-form">
                 <h2>Adicionar novo projeto</h2>
 
                 <form method="post" autoComplete="off" className="form" onSubmit={handleSubmit}>

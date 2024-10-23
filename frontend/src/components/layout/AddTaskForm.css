@@ -8,7 +8,7 @@
     background: var(--fade-color);
 }
 
-.add-task-form {    
+.container-form {    
     width: 90%;
     max-width: 700px;
     z-index: 9;
@@ -21,7 +21,7 @@
     border-radius: .5em;
 }
 
-.add-task-form h2 {
+.container-form h2 {
     margin-bottom: 1em;
 }
 
@@ -123,6 +123,17 @@
     border-color: var(--primary-color);
     color: var(--primary-color);
     background: transparent;
+}
+
+.bottom-link {
+    text-align: center;
+    font-weight: bold;
+    font-size: .8em;
+    color: var(--text-secondary-color);
+}
+
+.bottom-link a {
+    color: var(--primary-color);
 }
 
 .error label, 
