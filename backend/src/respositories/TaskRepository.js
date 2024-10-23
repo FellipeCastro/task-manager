@@ -1,14 +1,6 @@
 import { consult } from "../database/connection.js"
 
-class TaskRepository {
-    async List(id_board) {
-        const sql = "SELECT * FROM tasks WHERE board_id = ?"
-
-        const result = await consult(sql, [id_board])
-
-        return result
-    }
-    
+class TaskRepository {    
     async Insert(id_board, title, description) {
         const sql = "INSERT INTO tasks (board_id, title, description) VALUES (?, ?, ?)"
 
@@ -17,10 +9,10 @@ class TaskRepository {
         return { id_task: result.insertId }
     }
 
-    async Delete(id_task) {
-        const sql = "DELETE FROM tasks WHERE id = ?"
+    async Delete(id_board, id_task) {
+        const sql = "DELETE FROM tasks WHERE id = ? AND board_id = ?"
 
-        await consult(sql, [id_task])
+        await consult(sql, [id_task, id_board])
 
         return { id_task }
     }

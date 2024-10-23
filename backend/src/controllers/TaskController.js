@@ -1,14 +1,6 @@
 import TaskService from "../services/TaskService.js"
 
-class TaskController {
-    async List(req, res) {
-        const id_board = req.params.id_board
-
-        const result = await TaskService.List(id_board)
-
-        res.status(200).json(result)
-    }
-    
+class TaskController {    
     async Insert(req, res) {
         const id_board = req.params.id_board
         const { title, description } = req.body
@@ -19,9 +11,10 @@ class TaskController {
     }
 
     async Delete(req, res) {
+        const id_board = req.params.id_board
         const id_task = req.params.id_task
 
-        const result = await TaskService.Delete(id_task)
+        const result = await TaskService.Delete(id_board, id_task)
 
         res.status(200).json(result)
     }

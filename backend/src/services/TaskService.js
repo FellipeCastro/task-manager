@@ -1,20 +1,14 @@
 import TaskRepository from "../respositories/TaskRepository.js"
 
-class TaskService {
-    async List(id_board) {
-        const result = await TaskRepository.List(id_board)
-
-        return result
-    }
-    
+class TaskService {    
     async Insert(id_board, title, description) {
         const result = await TaskRepository.Insert(id_board, title, description)
 
         return result
     }
 
-    async Delete(id_task) {
-        const result = await TaskRepository.Delete(id_task)
+    async Delete(id_board, id_task) {
+        const result = await TaskRepository.Delete(id_board, id_task)
 
         return result
     }

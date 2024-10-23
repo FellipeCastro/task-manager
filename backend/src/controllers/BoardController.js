@@ -1,10 +1,10 @@
 import BoardService from "../services/BoardService.js"
 
 class BoardController {
-    async List(req, res) {
+    async ListFullStructure(req, res) {
         const id_user = req.id_user
 
-        const result = await BoardService.List(id_user)
+        const result = await BoardService.ListFullStructure(id_user)
 
         res.status(200).json(result)
     }
@@ -19,9 +19,10 @@ class BoardController {
     }
 
     async Delete(req, res) {
+        const id_user = req.id_user
         const id_board = req.params.id_board
 
-        const result = await BoardService.Delete(id_board)
+        const result = await BoardService.Delete(id_user, id_board)
 
         res.status(200).json(result)
     }
