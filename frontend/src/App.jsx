@@ -5,23 +5,26 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 import Home from "./components/pages/Home"
 import Login from "./components/pages/Login"
 import Register from "./components/pages/Register"
+import ProtectedRoute from "./ProtectedRoute"
 
 const App = () => {
-  const [idUser, setIdUser] = useState(1)
-
   return (
     <>
-      {idUser ? (
-        <Home />
-      ) : (
-        <Router>
-          <Routes>
-            <Route exact path="/" element={<Navigate to="/login" />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-          </Routes>
-        </Router>
-      )}
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<Navigate to="/login" />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route 
+            path="/home"
+            element={
+              <ProtectedRoute>
+                <Home />
+              </ProtectedRoute>
+            }
+          />
+        </Routes>
+      </Router>
     </>
   )
 }
