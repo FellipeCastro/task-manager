@@ -49,33 +49,38 @@ const Home = () => {
   }, [])
 
   const deleteBoard = async (id) => {
+    if (!id) {
+      console.error("ID não definido")
+      return 
+    }
+    
     try {
       const token = localStorage.getItem("authToken")
       if (!token) {
         throw new Error("Usuário não autenticado")
       }
-
+  
       // Deletando o board no servidor
       await api.delete(`/boards/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
       })
-
-      // Atualizando o estado no front-end
+  
+      // Filtrando os boards removendo o board deletado
       const updatedBoards = boards.filter(board => board.id !== id)
       setBoards(updatedBoards)
-
+  
       // Se o board deletado era o board ativo, redefinimos o activeBoardId
       if (activeBoardId === id) {
         setActiveBoardId(updatedBoards.length > 0 ? updatedBoards[0].id : null)
       }
+  
     } catch (error) {
       console.error("Erro ao deletar o painel: ", error)
     }
   }
-
-
+  
   const addBoard = async (newBoardTitle) => {
     try {
       const token = localStorage.getItem("authToken")
@@ -119,11 +124,6 @@ const Home = () => {
       console.error("Erro ao adicionar o novo painel: ", error)
     }
   }
-
-
-  // Definindo board ativo com base no activeBoardId
-  const activeBoard = boards.find((board) => board.id === activeBoardId)
-
 
   // Função para mostrar o modal da tarefa clicada
   const handleTaskClick = (task) => {
@@ -196,6 +196,9 @@ const Home = () => {
     const html = document.querySelector("html")
     html.classList.toggle("light-mode")
   }
+
+  // Definindo board ativo com base no activeBoardId
+  const activeBoard = boards.find((board) => board.id === activeBoardId)
 
   return (
     <>
