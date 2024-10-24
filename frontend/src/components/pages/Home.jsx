@@ -9,6 +9,8 @@ import AddTaskForm from "../layout/AddTaskForm"
 import TaskModal from "../layout/TaskModal"
 import Footer from "../layout/Footer"
 
+import api from "../../constants/api"
+
 const Home = () => {
   const [boards, setBoards] = useState([])
   const [activeBoardId, setActiveBoardId] = useState(null)
@@ -19,51 +21,105 @@ const Home = () => {
   const [isOpen, setIsOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(true)
 
-
-  // Fazendo a requisição da API sempre que a página é atualizada
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("/data.json")
-      const result = await response.json()
-      // Povoando o state com o resultado gerado
-      setBoards(result.boards)
+    const fetchBoards = async () => {
+      try {
+        const token = localStorage.getItem("authToken")
+        if (!token) {
+          throw new Error("Usuário não autenticado")
+        }
 
-      // Definir o primeiro board como ativo automaticamente, se existir
-      if (result.boards.length > 0) {
-        setActiveBoardId(result.boards[0].id)
+        const res = await api.get("/boards/overview", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        })
+        const result = res.data
+        setBoards(result)
+
+        if (result.length > 0) {
+          setActiveBoardId(result[0].id)
+        }
+      } catch (error) {
+        console.error("Erro ao buscar os painéis: ", error)
       }
     }
 
-    fetchData()
+    fetchBoards()
   }, [])
 
-  const deleteBoard = (id) => {
-    // Filtrando os boards em que o id é deifenrente do id passado como parametro
-    const updatedBoards = boards.filter(board => board.id !== id)
-    setBoards(updatedBoards)
+  const deleteBoard = async (id) => {
+    try {
+      const token = localStorage.getItem("authToken")
+      if (!token) {
+        throw new Error("Usuário não autenticado")
+      }
 
-    // Se o board ativo for deletado, resetamos o activeBoardId
-    if (activeBoardId === id) {
-      setActiveBoardId(null)
+      // Deletando o board no servidor
+      await api.delete(`/boards/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
+
+      // Atualizando o estado no front-end
+      const updatedBoards = boards.filter(board => board.id !== id)
+      setBoards(updatedBoards)
+
+      // Se o board deletado era o board ativo, redefinimos o activeBoardId
+      if (activeBoardId === id) {
+        setActiveBoardId(updatedBoards.length > 0 ? updatedBoards[0].id : null)
+      }
+    } catch (error) {
+      console.error("Erro ao deletar o painel: ", error)
     }
-
-    setIsOpen(false)
   }
 
-  const addBoard = (newBoardTitle) => {
-    // Criando novo board com o title passado como parametro
-    const newBoard = {
-      id: boards.length + 1,
-      title: newBoardTitle,
-      tasks: [],
+
+  const addBoard = async (newBoardTitle) => {
+    try {
+      const token = localStorage.getItem("authToken")
+      if (!token) {
+        throw new Error("Usuário não autenticado")
+      }
+
+      // Fazendo a requisição POST para criar o novo board
+      const res = await api.post(
+        "/boards",
+        { 
+          title: newBoardTitle 
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        }
+      )
+
+      // Obtendo o ID do novo board a partir da resposta
+      const newBoardId = res.data.id
+
+      // Criando manualmente o objeto do novo board no front-end
+      const newBoard = {
+        id: newBoardId,
+        title: newBoardTitle,
+        tasks: [] // Inicialmente, o board não tem tarefas
+      }
+
+      // Atualizando o estado com o novo board
+      setBoards([...boards, newBoard])
+
+      // Definir o novo board como ativo
+      setActiveBoardId(newBoardId)
+
+      // Fechando o modal de adição de board
+      setShowAddBoardForm(false)
+
+    } catch (error) {
+      console.error("Erro ao adicionar o novo painel: ", error)
     }
-
-    // Adicionando novo board no state
-    setBoards([...boards, newBoard])
-    setActiveBoardId(newBoard.id)
-
-    setIsOpen(false)
   }
+
 
   // Definindo board ativo com base no activeBoardId
   const activeBoard = boards.find((board) => board.id === activeBoardId)
