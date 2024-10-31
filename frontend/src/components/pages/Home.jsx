@@ -20,16 +20,14 @@ const Home = () => {
   const [selectedTask, setSelectedTask] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(true)
-  
+
   const fetchData = async () => {
     const response = await api.get("/boards/overview")
     const result = await response.data
 
-    if (result.length > 0) {
-      setActiveBoardId(result[0].id)
+    if (result) {
+      setBoards(result)
     }
-
-    setBoards(result)
   }
 
   const deleteBoard = async (id) => {
@@ -37,7 +35,7 @@ const Home = () => {
     const result = await response.data
 
     if (result) {
-      fetchData()
+      fetchData()      
     }
 
     // Se o board ativo for deletado, resetamos o activeBoardId
@@ -56,7 +54,6 @@ const Home = () => {
 
     if (result) {
       fetchData()
-      setActiveBoardId(newBoard.id)
       setIsOpen(false)
     }
   }
@@ -70,46 +67,27 @@ const Home = () => {
     setShowTaskModal(true)
   }
 
-  const updateTask = (updatedTask) => {
-    const updatedBoards = boards.map((board) => {
-      // Verifica se o board é o ativo
-      if (board.id === activeBoardId) {
-        return {
-          ...board,
-          // Atualiza a lista de tarefas do board
-          tasks: board.tasks.map((task) =>
-            // Substitui a tarefa correspondente pelo updatedTask
-            task.id === updatedTask.id ? updatedTask : task
-          )
-        }
-      }
-      // Se o board não for o ativo, retorna o board original
-      return board
+  const updateTask = async (subtaskId, subtaskIsDone) => {
+    const response = await api.put(`/subtasks/${subtaskId}`, {
+      is_done: !subtaskIsDone  
     })
-    // Atualiza a lista de boards com o board que contém a tarefa atualizada
-    setBoards(updatedBoards)
-    // Define a tarefa selecionada como a tarefa atualizada
-    setSelectedTask(updatedTask)
+
+    const result = response.data
+
+    if (result) {
+      fetchData() 
+      setShowTaskModal(false)
+    }
   }
 
+  const deleteTask = async (taskId) => {
+    const response = await api.delete(`/tasks/${activeBoardId}/${taskId}`)
+    const result = await response.data
 
-  const deleteTask = (taskId) => {
-    const updatedBoards = boards.map((board) => {
-      // Verifica se o board é o ativo
-      if (board.id === activeBoardId) {
-        return {
-          ...board,
-          // Remove a tarefa com o ID correspondente da lista de tarefas
-          tasks: board.tasks.filter((task) => task.id !== taskId)
-        }
-      }
-      // Se o board não for o ativo, retorna o board original
-      return board
-    })
-    // Atualiza a lista de boards sem a tarefa deletada
-    setBoards(updatedBoards)
-    // Fecha o modal de exibição de tarefas
-    setShowTaskModal(false)
+    if (result) {
+      fetchData()
+      setShowTaskModal(false)
+    }
   }
 
 

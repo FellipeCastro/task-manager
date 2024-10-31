@@ -12,20 +12,9 @@ const TaskModal = ({ task, setShowTaskModal, updateTask, deleteTask }) => {
         return subtasks.filter((subtask) => subtask.isDone).length
     }
 
-    // Função para alternar o estado de conclusão (isDone) de uma subtarefa
-    const toggleSubtask = (subtaskId) => {
-        // Mapeia as subtarefas e alterna o valor de 'isDone' da subtarefa correspondente ao ID
-        const updatedSubtasks = task.subtasks.map((subtask) =>
-            subtask.id === subtaskId ? { ...subtask, isDone: !subtask.isDone } : subtask
-        )
-
-        // Cria uma nova tarefa com as subtarefas atualizadas
-        const updatedTask = { ...task, subtasks: updatedSubtasks }
-
-        // Chama a função updateTask para atualizar a tarefa com as subtarefas modificadas
-        updateTask(updatedTask)
+    const handleEdit = (subtaskId, subtaskIsDone) => {
+        updateTask(subtaskId, subtaskIsDone)
     }
-
 
     return (
         <>
@@ -45,9 +34,9 @@ const TaskModal = ({ task, setShowTaskModal, updateTask, deleteTask }) => {
                 <div className="subtasks">
                     {task.subtasks.map((subtask) => {
                         return (
-                            <div key={subtask.id} className={`subtask ${subtask.isDone ? "done" : ""}`}>
-                                <button className="subtask-btn" onClick={() => toggleSubtask(subtask.id)}>
-                                    {subtask.isDone ? <FaCheck /> : ""}
+                            <div key={subtask.id} className={`subtask ${subtask.is_done ? "done" : ""}`}>
+                                <button className="subtask-btn" onClick={() => handleEdit(subtask.id, subtask.is_done)}>
+                                    {subtask.is_done ? <FaCheck /> : ""}
                                 </button>
                                 <span>{subtask.title}</span>
                             </div>

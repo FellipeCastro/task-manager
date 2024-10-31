@@ -9,7 +9,7 @@ const MainBoard = ({ activeBoard, handleTaskClick }) => {
     // Contando as subtasks completas
     const countCompletedSubtasks = (subtasks) => {
         // filtrando as subtasks em que isDone é verdadeiro
-        return subtasks.filter((subtask) => subtask.isDone).length
+        return subtasks.filter((subtask) => subtask.is_done).length
     }
 
     // Definindo tarefas em que nenhuma subtask esta completa como 'afazer'

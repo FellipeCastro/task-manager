@@ -9,18 +9,18 @@ class SubtaskRepository {
         return { id_subtask: result.insertId }
     }
 
-    async Edit(id_task, id_subtask, is_done) {
-        const sql = "UPDATE subtasks SET is_done = ? WHERE id = ? AND task_id = ?"
+    async Edit(id_subtask, is_done) {
+        const sql = "UPDATE subtasks SET is_done = ? WHERE id = ?"
 
-        await consult(sql, [is_done, id_subtask, id_task])
+        await consult(sql, [is_done, id_subtask])
 
         return { id_subtask }
     }
 
-    async Delete(id_task, id_subtask) {
-        const sql = "DELETE FROM subtasks WHERE id = ? AND task_id = ?"
+    async Delete(id_subtask) {
+        const sql = "DELETE FROM subtasks WHERE id = ?"
 
-        await consult(sql, [id_subtask, id_task])
+        await consult(sql, [id_subtask])
 
         return { id_subtask }
     }
