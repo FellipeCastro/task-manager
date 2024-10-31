@@ -9,6 +9,8 @@ import AddTaskForm from "../layout/AddTaskForm"
 import TaskModal from "../layout/TaskModal"
 import Footer from "../layout/Footer"
 
+import api from "../../constants/api"
+
 const Home = () => {
   const [boards, setBoards] = useState([])
   const [activeBoardId, setActiveBoardId] = useState(null)
@@ -18,29 +20,25 @@ const Home = () => {
   const [selectedTask, setSelectedTask] = useState(null)
   const [isOpen, setIsOpen] = useState(false)
   const [darkMode, setDarkMode] = useState(true)
+  
+  const fetchData = async () => {
+    const response = await api.get("/boards/overview")
+    const result = await response.data
 
-
-  // Fazendo a requisição da API sempre que a página é atualizada
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch("/data.json")
-      const result = await response.json()
-      // Povoando o state com o resultado gerado
-      setBoards(result.boards)
-
-      // Definir o primeiro board como ativo automaticamente, se existir
-      if (result.boards.length > 0) {
-        setActiveBoardId(result.boards[0].id)
-      }
+    if (result.length > 0) {
+      setActiveBoardId(result[0].id)
     }
 
-    fetchData()
-  }, [])
+    setBoards(result)
+  }
 
-  const deleteBoard = (id) => {
-    // Filtrando os boards em que o id é deifenrente do id passado como parametro
-    const updatedBoards = boards.filter(board => board.id !== id)
-    setBoards(updatedBoards)
+  const deleteBoard = async (id) => {
+    const response = await api.delete(`/boards/${id}`)
+    const result = await response.data
+
+    if (result) {
+      fetchData()
+    }
 
     // Se o board ativo for deletado, resetamos o activeBoardId
     if (activeBoardId === id) {
@@ -50,24 +48,21 @@ const Home = () => {
     setIsOpen(false)
   }
 
-  const addBoard = (newBoardTitle) => {
-    // Criando novo board com o title passado como parametro
-    const newBoard = {
-      id: boards.length + 1,
-      title: newBoardTitle,
-      tasks: [],
+  const addBoard = async (title) => {
+    const response = await api.post("/boards", {
+      title
+    })
+    const result = await response.data
+
+    if (result) {
+      fetchData()
+      setActiveBoardId(newBoard.id)
+      setIsOpen(false)
     }
-
-    // Adicionando novo board no state
-    setBoards([...boards, newBoard])
-    setActiveBoardId(newBoard.id)
-
-    setIsOpen(false)
   }
 
   // Definindo board ativo com base no activeBoardId
   const activeBoard = boards.find((board) => board.id === activeBoardId)
-
 
   // Função para mostrar o modal da tarefa clicada
   const handleTaskClick = (task) => {
@@ -140,6 +135,10 @@ const Home = () => {
     const html = document.querySelector("html")
     html.classList.toggle("light-mode")
   }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 
   return (
     <>

@@ -18,8 +18,7 @@ const AddBoardForm = ({ setShowAddBoardForm, addBoard }) => {
             return 
         }
 
-        // Chamando a função addBoard com o valor do input como parâmetro
-        addBoard(newBoardTitle)
+        addBoard(newBoardTitle) // Chamando a função addBoard com o valor do input como parâmetro
         setShowAddBoardForm(false) // Fechando o formulário
     }
 
