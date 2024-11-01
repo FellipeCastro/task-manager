@@ -27,6 +27,10 @@ const Home = () => {
 
     if (result) {
       setBoards(result)
+      
+       if (activeBoardId == null) {
+        setActiveBoardId(result[0].id)
+       }
     }
   }
 

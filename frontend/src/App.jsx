@@ -4,7 +4,6 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 import Home from "./components/pages/Home"
 import Login from "./components/pages/Login"
 import Register from "./components/pages/Register"
-import Profile from "./components/pages/Profile"
 
 const App = () => {
   const token  = localStorage.getItem("authToken")
@@ -20,12 +19,6 @@ const App = () => {
             path="/home"
             element={
               token ? <Home /> : <Navigate to="/login" />
-            }
-          />
-          <Route 
-            path="/profile"
-            element={
-              token ? <Profile /> : <Navigate to="/login" />
             }
           />
         </Routes>

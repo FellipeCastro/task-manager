@@ -45,10 +45,10 @@
     color: var(--primary-color);
 }
 
-.profile-btn {
+.logout-btn {
     background: transparent;
     border: none;
-    color: var(--primary-color);
+    color: var(--text-secondary-color);
     font-size: 2em;
     cursor: pointer;
 }
