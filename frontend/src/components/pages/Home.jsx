@@ -35,7 +35,7 @@ const Home = () => {
     const result = await response.data
 
     if (result) {
-      fetchData()      
+      fetchData()
     }
 
     // Se o board ativo for deletado, resetamos o activeBoardId
@@ -69,13 +69,13 @@ const Home = () => {
 
   const updateTask = async (subtaskId, subtaskIsDone) => {
     const response = await api.put(`/subtasks/${subtaskId}`, {
-      is_done: !subtaskIsDone  
+      is_done: !subtaskIsDone
     })
 
     const result = response.data
 
     if (result) {
-      fetchData() 
+      fetchData()
       setShowTaskModal(false)
     }
   }
@@ -91,22 +91,16 @@ const Home = () => {
   }
 
 
-  const addTask = (newTask) => {
-    const updatedBoards = boards.map((board) => {
-      // Verifica se o board é o ativo
-      if (board.id === activeBoardId) {
-        return {
-          ...board,
-          // Adiciona a nova tarefa à lista de tarefas
-          tasks: [...board.tasks, newTask],
-        }
-      }
-      // Se o board não for o ativo, retorna o board original
-      return board
-    })
-    // Atualiza a lista de boards com a nova tarefa adicionada
-    setBoards(updatedBoards)
+  const addTask = async (newTask) => {
+    const response = await api.post(`/tasks/${activeBoardId}`, newTask)
+    const result = await response.data
+
+    if (result) {
+      fetchData() // Recarrega os dados após adicionar a tarefa
+      setShowAddTaskForm(false) // Fecha o formulário
+    }
   }
+
 
   const toggleMode = () => {
     setDarkMode(!darkMode)

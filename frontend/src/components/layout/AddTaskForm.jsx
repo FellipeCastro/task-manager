@@ -69,14 +69,12 @@ const AddTaskForm = ({ setShowAddTaskForm, addTask }) => {
 
         // Cria um novo objeto de tarefa com os valores preenchidos no formulário
         const newTask = {
-            id: Date.now(),
             title,
             description,
             subtasks,
         }
 
         addTask(newTask) // Chama a função de adicionar tarefa
-        setShowAddTaskForm(false) // Fecha o formulário após adicionar a tarefa
     }
 
 
