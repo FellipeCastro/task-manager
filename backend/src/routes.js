@@ -23,7 +23,6 @@ router.post("/tasks/:id_board", Token.Validate, TaskController.Insert)
 router.delete("/tasks/:id_board/:id_task", Token.Validate, TaskController.Delete)
 
 // Subtasks
-router.post("/subtasks", Token.Validate, SubtaskController.Insert)
 router.put("/subtasks/:id_subtask", Token.Validate, SubtaskController.Edit)
 router.delete("/subtasks/:id_subtask", Token.Validate, SubtaskController.Delete)
 

@@ -1,15 +1,6 @@
 import SubtaskService from "../services/SubtaskService.js"
 
 class SubtaskController {    
-    async Insert(req, res) {
-        const id_task = req.params.id_task
-        const { title } = req.body
-
-        const result = await SubtaskService.Insert(id_task, title)
-
-        res.status(201).json(result)
-    }
-
     async Edit(req, res) {
         const id_subtask = req.params.id_subtask
         const { is_done } = req.body

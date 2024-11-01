@@ -3,9 +3,9 @@ import TaskService from "../services/TaskService.js"
 class TaskController {    
     async Insert(req, res) {
         const id_board = req.params.id_board
-        const { title, description } = req.body
+        const { title, description, subtasks } = req.body
 
-        const result = await TaskService.Insert(id_board, title, description)
+        const result = await TaskService.Insert(id_board, title, description, subtasks)
 
         res.status(201).json(result)
     }

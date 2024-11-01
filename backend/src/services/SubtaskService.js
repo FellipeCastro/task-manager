@@ -1,12 +1,6 @@
 import SubtaskRepository from "../respositories/SubtaskRepository.js"
 
 class SubtaskService {
-    async Insert(id_task, title) {
-        const result = await SubtaskRepository.Insert(id_task, title)
-
-        return result
-    }
-
     async Edit(id_subtask, is_done) {
         const result = await SubtaskRepository.Edit(id_subtask, is_done)
 
