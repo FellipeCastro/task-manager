@@ -21,6 +21,13 @@
     display: none;
 }
 
+.btns-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 2em;
+}
+
 .btn {
     background: var(--primary-color);
     color: #FFF;
@@ -36,6 +43,14 @@
 .btn:hover {
     background: transparent;
     color: var(--primary-color);
+}
+
+.profile-btn {
+    background: transparent;
+    border: none;
+    color: var(--primary-color);
+    font-size: 2em;
+    cursor: pointer;
 }
 
 @media (max-width: 1290px) {    

@@ -1,16 +1,17 @@
-import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
 
 // Componentes
 import Home from "./components/pages/Home"
 import Login from "./components/pages/Login"
 import Register from "./components/pages/Register"
+import Profile from "./components/pages/Profile"
 
 const App = () => {
   const token  = localStorage.getItem("authToken")
 
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route exact path="/" element={<Navigate to="/login" />} />
           <Route path="/login" element={<Login />} />
@@ -21,8 +22,14 @@ const App = () => {
               token ? <Home /> : <Navigate to="/login" />
             }
           />
+          <Route 
+            path="/profile"
+            element={
+              token ? <Profile /> : <Navigate to="/login" />
+            }
+          />
         </Routes>
-      </Router>
+      </BrowserRouter>
     </>
   )
 }
