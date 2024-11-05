@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import api from "../../constants/api"
 
-import "../layout/AddTaskForm.css"
+import "../layout/Form.css"
 
 const Login = () => {
   const [email, setEmail] = useState("")
@@ -15,13 +15,13 @@ const Login = () => {
     e.preventDefault()
 
     try {
-      const res = await api.post("/users/login", {
+      const response = await api.post("/users/login", {
         email,
         password
       })
-      const data = res.data
+      const result = response.data
 
-      localStorage.setItem("authToken", data.token)
+      localStorage.setItem("authToken", result.token)
       navigate("/home")
     } catch (error) {
       console.error("Erro ao realizar login: ", error)

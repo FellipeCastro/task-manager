@@ -1,5 +1,6 @@
 import { useState } from "react"
-import "./AddTaskForm.css"
+
+import "./Form.css"
 
 const AddBoardForm = ({ setShowAddBoardForm, addBoard }) => {
     // State para o valor do input

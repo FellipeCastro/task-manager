@@ -1,10 +1,10 @@
-import mysql from "mysql"
+import mysql from "mysql2"
 
 const connection = mysql.createConnection({
-    host: "localhost",
-    port: "3306",
+    host: "autorack.proxy.rlwy.net",
+    port: "44331",
     user: "root",
-    password: "root",
+    password: "qZJmGZeaDIIccNpkDqysbdINRqFYmNLv",
     database: "task_manager_db"
 })
 

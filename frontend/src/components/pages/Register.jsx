@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 
 import api from "../../constants/api.js"
 
-import "../layout/AddTaskForm.css"
+import "../layout/Form.css"
 
 const Register = () => {
     const [name, setName] = useState("")
@@ -22,19 +22,19 @@ const Register = () => {
         }
 
         try {
-            const res = await api.post("/users/register", {
+            const response = await api.post("/users/register", {
                 name,
                 email,
                 password
             })
-            const data = res.data
+            const result = response.data
 
-            if (!data) {
+            if (!result) {
                 alert("Erro ao registrar usuário")
                 return
             }
 
-            localStorage.setItem("authToken", data.token)
+            localStorage.setItem("authToken", result.token)
             navigate("/home")
         } catch (error) {
             console.error("Erro ao registrar usuário: ", error)
