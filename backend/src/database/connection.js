@@ -1,11 +1,12 @@
 import mysql from "mysql2"
+import "dotenv/config"
 
 const connection = mysql.createConnection({
-    host: "autorack.proxy.rlwy.net",
-    port: "44331",
-    user: "root",
-    password: "qZJmGZeaDIIccNpkDqysbdINRqFYmNLv",
-    database: "task_manager_db"
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 })
 
 connection.connect()
